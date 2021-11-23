@@ -1,0 +1,19 @@
+def kiemTraA (x,y):
+   f = x**4-x**3-7*x**2+x+6
+   if f == y :
+       return True
+
+def kiemTranghiem(x):
+    f = f = x**4-x**3-7*x**2+x+6
+    if f ==0 :
+        return True
+x=int(input('Nhap vao hoanh do x : '))
+y=int(input('Nhap vao tung do y : '))
+if kiemTraA(x,y)==True:
+    print('A thuoc do thi ham so f(x)')
+    if kiemTranghiem(x) ==True:
+        print('Hoanh do cua A la nghiem cua phuong trinh f(x)')
+    else :
+        print('Hoanh do cua A khong la nghiem cua phuong trinh f(x)')
+else:
+    print('A khong thuoc do thi ham so f(x)')
