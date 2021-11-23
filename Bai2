@@ -1,0 +1,11 @@
+def nhapList():
+    nhap = input('Nhap vao cac phan tu trong list(cach nhau boi dau ,) : ')
+    dayso = nhap.split(' ')
+    listvuanhap =[int(i)for i in dayso]
+    return listvuanhap
+def get_Sum (*ls):
+    tong = 0
+    for i in range(int(len(ls[0]))):
+        tong+=ls[0][i]
+    return tong
+print('Tong cua list vua nhap la: ',get_Sum(nhapList()))
