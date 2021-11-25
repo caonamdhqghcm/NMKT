@@ -1,0 +1,26 @@
+import cv2 as cv
+
+# Đọc file hình cái cây
+img = cv.imread('green_leaf.jpg')
+
+# Đọc file hình con bọ
+img_1=cv.imread('ladybug.jpg')
+
+# Chuyển hình cái cây từ  BGR sang BRAY
+img_gray=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+
+# Chuyển hình cái cây từ giá trị GAY sabg BGR
+img_gray_ROI=cv.cvtColor(img_gray,cv.COLOR_GRAY2BGR)
+
+#Cắt hình con bọ
+roi = img_1[10:345,20:355]
+
+# Resize hình con bọ
+roi_resize = cv.resize(roi,(155,135))
+
+#(175:286),(330:421) - Kích thước, vị trí cắt hình cái cây để ném con bọ vào
+img_gray_ROI[286:421,175:330]=roi_resize
+
+cv.imshow('IMG',img_gray_ROI)
+cv.waitKey(0)
+cv.destroyAllWindows()
