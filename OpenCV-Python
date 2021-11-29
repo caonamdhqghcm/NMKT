@@ -1,0 +1,24 @@
+import numpy as np
+import cv2 as cv
+
+count = 0
+
+img = cv.imread('bottle.jpg')
+output = img.copy()
+
+gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+gray = cv.medianBlur(gray, 5)
+
+cirles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 1,12.3,
+param1=212,param2=38.7,minRadius=0,maxRadius=0)
+
+detected_circles = np.uint16(np.around(cirles))
+
+for (x, y, r) in detected_circles[0, :]:
+    cv.circle(output, (x, y,), r, (0, 255, 0), 3)
+    cv.circle(output, (x, y,), 2, (0, 255, 255), 3)
+    count +=1
+cv.putText(output,f'Bottle Cap:{int(count)}',(10,50),cv.FONT_HERSHEY_COMPLEX_SMALL,1,(255,0,0),2)
+cv.imshow('Bottle Cap',output)
+cv.waitKey(0)
+cv.destroyAllWindows()
